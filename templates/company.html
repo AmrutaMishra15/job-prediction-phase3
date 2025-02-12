@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>Company Portal</title>
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .form-container {
+                text-align: center;
+                border: 1px solid #ddd;
+                padding: 20px;
+                border-radius: 5px;
+                width: 500px;
+            }
+            .form-field {
+                margin-bottom: 10px;
+                margin-right: 10px;
+            }
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            input[type="number"],
+            select {
+                width: calc(100% - 22px);
+                padding: 10px;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+                box-sizing: border-box;
+                font-family: inherit;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+            }
+            select {
+                background-image: url('data:image/svg+xml;charset=US-ASCII,<svg width="14" height="12" viewBox="0 0 14 12" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l6 6 6-6" stroke="%23666" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>');
+                background-repeat: no-repeat;
+                background-position: right 10px top 50%;
+                background-size: 14px 12px;
+            }
+            .form-button-group {
+                display: flex;
+                justify-content: center; 
+                gap: 10px; 
+            }
+            input[type="submit"],
+            button {
+                padding: 10px 20px;
+                border: none;
+                color: white;
+                font-weight: bold;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            input[type="submit"] {
+                background-color: #5cb85c;
+            }
+            button {
+                background-color: #d9534f;
+            }
+            .home {
+                background-color: #a3a0a0;
+            }
+        </style>
+
+        <script>
+            
+            // This function is resetting the form when user clicks on clear button
+            function clearForm() {
+                document.getElementById("prediction-form").reset();
+            }
+
+            // This function redirects the user to home page when user clicks on home button
+            function homeForm() {
+                window.location.href = './';
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <div class="form-container">
+
+            <h1>Company Portal</h1>
+
+            <!-- Form for company professionals to fill -->
+            <form id="prediction-form" method="post" action="/predict">
+
+                <!-- Input - Minimum Salary company can offer -->
+                <div class="form-field">
+                    <label for="min_salary">Minimun Salary Offered:</label>
+                    <input type="number" id="min_salary" name="min_salary" required>
+                </div>
+
+                <!-- Input - Work Type Company expects -->
+                <div class="form-field">
+                    <label for="formatted_work_type">Work Type:</label>
+                    <select id="formatted_work_type" name="formatted_work_type" required>
+                        <option disabled selected value>select an option</option>
+                        {% for work_type, cat_code in work_types %}
+                        <option value="{{ cat_code }}">{{ work_type }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Input - Remote Job availability -->
+                <div class="form-field">
+                    <label for="remote_allowed">Remote Allowed:</label>
+                    <select id="remote_allowed" name="remote_allowed" required>
+                        <option disabled selected value>select an option</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <!-- Input - Experience Level Company expects for a job -->
+                <div class="form-field">
+                    <label for="experience_level">Experience Level:</label>
+                    <select id="experience_level" name="experience_level" required>
+                        <option disabled selected value>select an option</option>
+                        {% for experience_level, cat_code in experience_levels %}
+                        <option value="{{ cat_code }}">{{ experience_level }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Input - Type of Application -->
+                <div class="form-field">
+                    <label for="application_type">Application Type:</label>
+                    <select id="application_type" name="application_type" required>
+                        <option disabled selected value>select an option</option>
+                        {% for application_type, cat_code in application_types %}
+                        <option value="{{ cat_code }}">{{ application_type }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Buttons to predict the result, clear the input and go back to home page -->
+                <div class="form-button-group">
+                    <input type="submit" method="post" action="/predict" value="Predict">
+                    <button type="button" onclick="clearForm()">Clear</button>
+                    <button type="button" onclick="homeForm()" class="home">Home</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </body>
+
+</html>

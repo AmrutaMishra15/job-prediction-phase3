@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                background: #fff;
+            }
+            div.gallery {
+            margin: 10px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            padding-bottom: 20px; 
+            }
+            
+            div.gallery:hover {
+            border: 1px solid #777;
+            }
+            
+            div.gallery img {
+            width: 100%;
+            height: auto;
+            display: block;
+            }
+            
+            div.desc {
+            padding: 15px;
+            text-align: center;
+            }
+            
+            * {
+            box-sizing: border-box;
+            }
+            
+            .responsive {
+            padding: 0 6px;
+            float: left;
+            width: 50%;
+            }
+            
+            @media only screen and (max-width: 800px) {
+            .responsive {
+                width: 50%;
+                margin: 6px 0;
+            }
+            }
+            
+            @media only screen and (max-width: 600px) {
+            .responsive {
+                width: 100%;
+                margin: 20px 0;
+            }
+            }
+            
+            .clearfix:after {
+            content: "";
+            display: table;
+            clear: both;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <section>
+            
+            <!--  This Section loads the image for Average salary based on Expereince level Image -->
+            <div class="responsive">
+                <div class="gallery">
+                    <img src="{{ url_for('static', filename='ExpLevelPlot.png') }}" alt="Plot Image">
+                </div>
+            </div>
+
+            <!--  This Section loads the image for Job Postings based on Expereince level Image -->
+            <div class="responsive">
+                <div class="gallery">
+                    <img src="{{ url_for('static', filename='experienceLevel.png') }}" alt="Plot Image">
+                </div>
+            </div>
+
+            <!--  This Section loads the image for work type distribution across the job applications -->
+            <div class="responsive">
+                <div class="gallery">
+                    <img src="{{ url_for('static', filename='workType.png') }}" alt="Plot Image">
+                </div>
+            </div>
+
+            <!--  This Section loads the image for Remote job  distribution across the job applications -->
+            <div class="responsive">
+                <div class="gallery">
+                    <img src="{{ url_for('static', filename='remoteAllowed.png') }}" alt="Plot Image">
+                </div>
+            </div>
+
+            <!--  This Section loads the image to show relation between number of application and job postings -->
+            <div class="responsive">
+                <div class="gallery">
+                    <img src="{{ url_for('static', filename='appliesPlot.png') }}" alt="Plot Image">
+                </div>
+            </div>
+            
+        </section>
+
+    </body>
+
+</html>

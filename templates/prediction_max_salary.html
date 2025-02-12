@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>Maximum Salary Range</title>
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .modal {
+                background: #fff;
+                padding: 20px;
+                border-radius: 5px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+            .modal h2 {
+                color: #4CAF50;
+            }
+            .modal p {
+                margin: 15px 0;
+            }
+            .close-button {
+                background-color: #d9534f;
+                color: white;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 5px;
+                display: inline-block;
+                margin-top: 20px;
+            }
+        </style>
+
+    </head>
+    
+    <body>
+
+        <div class="modal">
+
+            <h2>Maximum Salary Range Predicted</h2>
+            <p>Based on your inputs</p>
+
+            <div>
+                <strong>Maximum Salary Range: [ </strong> {{ prediction }} <strong> ]</strong>
+            </div>
+
+            <!-- Button to close the page and go back to previous page. -->
+            <a href="/company" class="close-button">Close</a>
+
+        </div>
+
+    </body>
+
+</html>

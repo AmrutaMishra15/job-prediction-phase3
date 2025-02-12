@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+        
+        <title>Work Type Prediction</title>
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+        <style>
+            .container {
+                max-width: 600px;
+                margin-top: 50px;
+                margin-bottom: 50px;
+            }
+            .form-field {
+                margin-bottom: 15px;
+            }
+            .form-button-group {
+                text-align: center;
+                margin-top: 20px;
+            }
+            .form-button-group button,
+            .form-button-group input {
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
+            .modal-header,
+            .modal-footer {
+                background-color: #95dde3;
+                color: white;
+            }
+            .modal-content {
+                border-radius: 0;
+            }
+            .close {
+                color: white;
+                opacity: 1;
+            }
+            label {
+                margin-bottom: .5rem;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="container mt-5 shadow bg-white rounded">
+
+            <div class="text-center mb-4">
+                <h3 >Predict Worktype required for jobs</h3>
+            </div>
+
+            <!-- Form for student to fill -->
+            <form id="worktype-form">
+
+                <!-- Input - Minimum salary expectation student have -->
+                <div class="form-field">
+                    <label for="min_salary">Minimun Salary Expectations:</label>
+                    <input type="number" id="min_salary" name="min_salary" required>
+                </div>
+
+                <!-- Input - if student wants a remote job or not -->
+                <div class="form-field">
+                    <label for="remote_allowed">Remote Allowed:</label>
+                    <select id="remote_allowed" name="remote_allowed" required>
+                        <option disabled selected value>select an option</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <!-- Input - if student wants a sponsorship or not -->
+                <div class="form-field">
+                    <label for="sponsored">Sponsored:</label>
+                    <select id="sponsored" name="sponsored" required>
+                        <option disabled selected value>select an option</option>
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+
+                <!-- Input - experience level a student has -->
+                <div class="form-field">
+                    <label for="experience_level">Experience Level:</label>
+                    <select id="experience_level" name="experience_level" required>
+                        <option disabled selected value>select an option</option>
+                            {% for experience_level, cat_code in experience_levels %}
+                        <option value="{{ cat_code }}">{{ experience_level }}</option>
+                            {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Input - Type of application -->
+                <div class="form-field">
+                    <label for="application_type">Application Type:</label>
+                    <select id="application_type" name="application_type" required>
+                        <option disabled selected value>select an option</option>
+                            {% for application_type, cat_code in application_types %}
+                        <option value="{{ cat_code }}">{{ application_type }}</option>
+                            {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Buttons to predict the result, clear the entered input in the form and go back to home page -->
+                <div class="form-button-group">
+                    <input type="submit" class="btn btn-primary" onsubmit="submitForm()" value="Predict">
+                    <button type="button" class="btn btn-info" onclick="clearForm()">Clear</button>
+                    <button type="button" class="btn btn-secondary" onclick="homeForm()" class="home">Home</button>
+                </div>
+
+            </form>
+
+        </div>
+
+
+        <div class="modal fade" id="predictionModalWorkType" tabindex="-1" role="dialog" aria-labelledby="predictionModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="predictionModalLabel">Prediction Result</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p id="predictionResultWorkType">Waiting for prediction...</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Including external JavaScript libraries and frameworks -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <script>
+        
+            // This function predicts the result when user clicks on predict button 
+            function submitForm() {
+                var form = document.getElementById('worktype-form');
+                var formData = new FormData(form);
+
+                fetch('/worktype', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('predictionResultWorkType').textContent = 'Work Type: ' + data.prediction;
+                    $('#predictionModalWorkType').modal('show');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            }
+
+            // This function is resetting the form when user clicks on clear button
+            function clearForm() {
+                document.getElementById('worktype-form').reset();
+                document.getElementById('predictionResultWorkType').textContent = '';
+            }
+            document.querySelector('.btn-info').addEventListener('click', clearForm);
+
+            // This function redirects the user to home page when user clicks on home button
+            function homeForm() {
+                window.location.href = '/'; 
+            }
+            document.getElementById('worktype-form').addEventListener('submit', function(event) {
+                event.preventDefault(); 
+                submitForm();
+            });
+            
+
+        </script>
+
+    </body>
+
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Job Predictions</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #fff;
+        }
+        .container {
+            width: 80%;
+            padding-bottom: 70px;
+            margin: auto;
+            overflow: hidden;
+        }
+        header, footer {
+            background-color: #83e1e3;
+            color: black;
+            padding: 10px 0;
+            text-align: center;
+        }
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .section {
+            margin: 20px 0;
+            text-align: center;
+        }
+        h1, h2 {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .portal {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .section.portal {
+            border: 2px solid #dee2e6; 
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            background-color: #f9f9f9;
+        }
+        .tab {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px; 
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 18px; 
+            text-decoration: none; 
+            color: black; 
+        }
+        .tab:hover {
+            background-color: #ddd;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        li {
+            font-size: 16px;
+            display: inline-block;
+            margin-right: 20px;
+        }
+        ol {
+            text-align: left;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        p {
+            text-align: left;
+            margin-top: 10px;
+        }
+        .portal-button {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .portal-button a.tab {
+            background-color: #007bff; 
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .portal-button a.tab:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+        div.gallery {
+            border: 1px solid #ccc;
+            margin-bottom: 30px;
+        }
+
+        div.gallery:hover {
+            border: 1px solid #777;
+        }
+
+        div.gallery img {
+            width: 100%;
+            height: auto;
+        }
+
+        div.desc {
+        padding: 15px;
+        text-align: center;
+        }
+
+        * {
+        box-sizing: border-box;
+        }
+
+        .responsive {
+        padding: 0 6px;
+        float: left;
+        width: 50%;
+        }
+
+        @media only screen and (max-width: 700px) {
+        .responsive {
+            width: 50%;
+            margin: 6px 0;
+        }
+        }
+
+        @media only screen and (max-width: 500px) {
+        .responsive {
+            width: 100%;
+        }
+        }
+
+        .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--  Title of Project -->
+    <header>
+        <h1>Welcome to the Job Prediction Service</h1>
+    </header>
+
+    
+    <div class="container">
+        
+        <!--  This Section describes the summary of the Job Prediction service and what services are available -->
+        <div class="section portal">
+
+            <h2>About the portal</h2>
+
+            <p>Welcome to the Job Prediction Service portal! </p>
+            <p>This portal can be used by comapnies and students as well. Company and specially HR Professionals can use this particular web application to plan the recruitment according to current job market. Companies lose great talent if they dont' keep the salary or benefits as per the market. This portal will give you guys an insight on the current market conditions and will help you to plan your hiring expectations accordingly.</p>
+            <p>This portal can be used by students to check the availability of remote jobs and work type offered by the market based on their expectations. You guys as well can check the current market conditions in the following visualizations.</p>
+            
+            <a href="/visualization">Click here to check the current market conditions based on our dataset.</a>
+
+        </div>
+
+        <!--  This Section describes the purpose of Company Portal and Link to redirect to company.html for predictions -->
+        <div class="section portal">
+
+            <h2>Company Portal</h2>
+
+            <p>In this portal you will be able to perform the following tasks:</p>
+                <ol>
+                    <li>Find out the maximum salary offered based on current market conditions. This prediction will be based on the minimum salary offered by the company, work type, remote jobs, sponsorship offered, experience level needed for the job, and type of application needed.</li>
+                </ol> 
+
+            <div class="portal-button">
+                <a class="tab" href="/company">Company Portal</a>
+            </div>
+
+        </div>
+
+        <!--  This Section describes the purpose of Student/job seekers Portal and Link to redirect to student.html for predictions -->
+        <div class="section portal">
+
+            <h2>Student Portal</h2>
+
+            <p>In this portal you will be able to perform the following tasks:</p>
+                <ol>
+                    <li>You will be able to predict if the job can be remote or not based on the minimum salary you are expecting, type of work you want, if you want sponsorship or not, experience level needed for the job you are looking for, and type of application.</li>
+                    <li>You will be able to predict minimum salary expectations, based on if the job is remote or not, if you want sponsorship or not, experience level you are looking for, and type of application.</li>
+                </ol>
+
+            <div class="portal-button">
+                <a class="tab" href="/student">Student Portal</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--This section is to add a fixed footer for better visulization of the application -->
+    <footer>
+        Content © 2023 Job Predictions - DIC Project
+    </footer>
+
+</body>
+</html>

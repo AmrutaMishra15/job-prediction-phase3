@@ -14,3 +14,18 @@ Job Prediction Service App-  Final Application to predict Job availability stati
 2. one can also get insights about the current job trends like what is the remote job distributions, Various types of work and its percentage of distribution, Average salary offered by the companies for job profiles. It can also be used by companies and researchers to look at the job market trends
 3. Job Seekers can also predict the possibility of getting remote jobs based on their experience levels, Application type, sponsorship etc. They can also predict the possible work type they should be looking for based on their profile, expectation and the market trends.
 4. HR professionals of companies can also make use of the analysis to tailor their job offerings like what Maximum salary bracket that should be offered against other industries.
+
+References:
+1. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
+2. https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html
+3. https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier
+4. https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+5. https://scikit-learn.org/stable/modules/naive_bayes.html
+6. https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html
+7. https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html
+8. https://en.wikipedia.org/wiki/Gradient_boosting
+9. https://www.kaggle.com/datasets
+10. https://en.wikipedia.org/wiki/Exploratory_data_analysis
+11. https://pandas.pydata.org/docs/user_guide/index.html#user-guide
+12. https://seaborn.pydata.org/generated/seaborn.heatmap.html
+13. https://matplotlib.org/3.5.3/api/_as_gen/matplotlib.pyplot.html
